@@ -1,49 +1,45 @@
 const db = require("../models");
-const Student = db.student;
+const Department = db.department;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Student
+// Create and Save a new Department
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.fName) {
+  if (!req.body.name) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
     return;
   }
 
-  // Create a Student
-  const student = {
+  // Create a Departement
+  const department = {
     id: req.params.id,
-    fName: req.body.fName,
-    lName: req.body.lName,
-    email: req.body.email,
-    studentId: req.body.studentId,
-    date: req.body.date,
-    userId: req.body.userId
+    name: req.body.name,
+    
   };
 
-  // Save Student in the database
-  Student.create(student)
+  // Save Department in the database
+  Department.create(department)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while creating the Student.",
+        message: err.message || "Some error occurred while creating the Department.",
       });
     });
 };
 
 
 exports.getUserId = (req, res) => {
-  Student.findAll({ where: {userId : req.params.userId}})
+  Department.findAll({ where: {userId : req.params.userId}})
     .then((data) => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Student with id=${req.params.userId}.`,
+          message: `Cannot find Department with id=${req.params.userId}.`,
         });
       }
     })
@@ -60,7 +56,7 @@ exports.findAll = (req, res) => {
   const id = req.query.id;
   var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
 
-  Student.findAll({ where: condition })
+  Department.findAll({ where: condition })
     .then((data) => {
       res.send(data);
     })
@@ -71,106 +67,106 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single Student with an id
+// Find a single Department with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Student.findByPk(id)
+  Department.findByPk(id)
     .then((data) => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Student with id=${id}.`,
+          message: `Cannot find Department with id=${id}.`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Student with id=" + id,
+        message: "Error retrieving Department with id=" + id,
       });
     });
 };    
 
 // Find a single Student with an email
-exports.findByEmail = (req, res) => {
-  const email = req.params.email;
+// exports.findByEmail = (req, res) => {
+//   const email = req.params.email;
 
-  Student.findOne({
-    where: {
-      email: email,
-    },
-  })
-    .then((data) => {
-      if (data) {
-        res.send(data);
-      } else {
-        res.send({ email: "not found" });
-        /*res.status(404).send({
-          message: `Cannot find Student with email=${email}.`
-        });*/
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: "Error retrieving Student with email=" + email,
-      });
-    });
-};
+//   Student.findOne({
+//     where: {
+//       email: email,
+//     },
+//   })
+//     .then((data) => {
+//       if (data) {
+//         res.send(data);
+//       } else {
+//         res.send({ email: "not found" });
+//         /*res.status(404).send({
+//           message: `Cannot find Student with email=${email}.`
+//         });*/
+//       }
+//     })
+//     .catch((err) => {
+//       res.status(500).send({
+//         message: "Error retrieving Student with email=" + email,
+//       });
+//     });
+// };
 
-// Update a Student by the id in the request
+// Update a Department by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Student.update(req.body, {
+  Department.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Student was updated successfully.",
+          message: "Department was updated successfully.",
         });
       } else {
         res.send({
-          message: `Cannot update Student with id=${id}. Maybe Student was not found or req.body is empty!`,
+          message: `Cannot update Department with id=${id}. Maybe Department was not found or req.body is empty!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Student with id=" + id,
+        message: "Error updating Department with id=" + id,
       });
     });
 };
 
-// Delete a Student with the specified id in the request
+// Delete a Department with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Student.destroy({
+  Department.destroy({
     where: { id: id },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Student was deleted successfully!",
+          message: "Department was deleted successfully!",
         });
       } else {
         res.send({
-          message: `Cannot delete Student with id=${id}. Maybe Student was not found!`,
+          message: `Cannot delete Department with id=${id}. Maybe Department was not found!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Could not delete Student with id=" + id,
+        message: "Could not delete Department with id=" + id,
       });
     });
 };
 
 // Delete all People from the database.
 exports.deleteAll = (req, res) => {
-  Student.destroy({
+  Department.destroy({
     where: {},
     truncate: false,
   })
