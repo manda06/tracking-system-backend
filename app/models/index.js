@@ -20,8 +20,10 @@ db.session = require("./session.model.js")(sequelize, Sequelize);
 db.course = require("./course.model.js")(sequelize, Sequelize);
 
 db.student = require("./student.model.js")(sequelize, Sequelize);
-db.accommodation = require("./accommodation.model.js")(sequelize, Sequelize);
-
+db.accommodation = require("./asset.model.js")(sequelize, Sequelize);
+db.accommodation = require("./assetcategory.model.js")(sequelize, Sequelize);
+db.accommodation = require("./assetdata.model.js")(sequelize, Sequelize);
+db.accommodation = require("./assetvalues.model.js")(sequelize, Sequelize);
 // foreign keys for accommodation
 
 
