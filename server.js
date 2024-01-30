@@ -31,12 +31,8 @@ require("./app/routes/auth.routes.js")(app);
 require("./app/routes/user.routes")(app);
 
 require("./app/routes/course.routes")(app);
-require("./app/routes/semester.routes")(app);
-require("./app/routes/accommodationsRequests.routes")(app);
 
 
-require("./app/routes/student.routes")(app);
-require("./app/routes/request.routes")(app);
 require("./app/routes/accommodation.routes")(app);
 
 
