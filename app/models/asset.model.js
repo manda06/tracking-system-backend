@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-    const Student = require('./student.model.js')
-    const Course = require('./course.model.js')
+    const Asset = require('./asset.model.js')
+    
     
     const Asset = sequelize.define("asset", {
       name: {
@@ -9,8 +9,13 @@ module.exports = (sequelize, Sequelize) => {
       description: {
         type: Sequelize.STRING,
       },
-      
-
+      make: {
+        type: Sequelize.STRING,
+      },
+      model: {
+        type: Sequelize.STRING,
+      },
+     
       
 
     });

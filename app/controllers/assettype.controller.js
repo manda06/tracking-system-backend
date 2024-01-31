@@ -1,7 +1,7 @@
 const db = require("../models");
-const Accommodation = db.accommodation;
+const asset = db.asset;
 const Op = db.Sequelize.Op;
-// Create and Save a new Accommodation
+// Create and Save a new asset
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.title) {
@@ -10,29 +10,29 @@ exports.create = (req, res) => {
     });
     return;
   }
-  // Create a Accommodation
-  const accommodation = {
-    request: req.body.request,
-    studentID: req.body.studentID,
-    approvedBy: req.body.approvedBy,
+  // Create a asset
+  const asset = {
+    name: req.body.name,
+    
+    
   };
-  // Save Accommodation in the database
-  Accommodation.create(accommodation)
+  // Save asset in the database
+  asset.create(asset)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Accommodation.",
+          err.message || "Some error occurred while creating the asset.",
       });
     });
 };
-// Retrieve all Accommodation from the database.
+// Retrieve all asset from the database.
 exports.findAll = (req, res) => {
   const id = req.query.id;
   var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
-  Accommodation.findAll({ where: condition })
+  asset.findAll({ where: condition })
   
     .then((data) => {
       res.send(data);
@@ -40,7 +40,7 @@ exports.findAll = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving accommodations.",
+          err.message || "Some error occurred while retrieving assets.",
       });
     });
 };
@@ -49,94 +49,94 @@ exports.findAll = (req, res) => {
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Accommodation.findByPk(id, {include: Request})
+  asset.findByPk(id, {include: Request})
     .then((data) => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Accommodation with id=${id}.`,
+          message: `Cannot find asset with id=${id}.`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Error retrieving Accommodation with id=" + id,
+        message: err.message || "Error retrieving asset with id=" + id,
       });
     });
 };
-// Update a Accommodation by the id in the request
+// Update a asset by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
-  Accommodation.update(req.body, {
+  asset.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Accommodation was updated successfully.",
+          message: "asset was updated successfully.",
         });
       } else {
         res.send({
-          message: `Cannot update Accommodation with id=${id}. Maybe Accommodation was not found or req.body is empty!`,
+          message: `Cannot update asset with id=${id}. Maybe asset was not found or req.body is empty!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Error updating Accommodation with id=" + id,
+        message: err.message || "Error updating asset with id=" + id,
       });
     });
 };
-// Delete a Accommodation with the specified id in the request
+// Delete a asset with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Accommodation.destroy({
+  asset.destroy({
     where: { id: id },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Accommodation was deleted successfully!",
+          message: "asset was deleted successfully!",
         });
       } else {
         res.send({
-          message: `Cannot delete Accommodation with id=${id}. Maybe Accommodation was not found!`,
+          message: `Cannot delete asset with id=${id}. Maybe asset was not found!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Could not delete Accommodation with id=" + id,
+        message: err.message || "Could not delete asset with id=" + id,
       });
     });
 };
-// Delete all Accommodation from the database.
+// Delete all asset from the database.
 exports.deleteAll = (req, res) => {
-    Accommodation.destroy({
+    asset.destroy({
     where: {},
     truncate: false,
   })
     .then((nums) => {
-      res.send({ message: `${nums} Accommodation were deleted successfully!` });
+      res.send({ message: `${nums} asset were deleted successfully!` });
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all Accommodation.",
+          err.message || "Some error occurred while removing all asset.",
       });
     });
 };
 exports.findAllForCategory = (req, res) => {
   const category = req.params.category;
 
-  Accommodation.findAll({ where: { category: category } })
+  asset.findAll({ where: { category: category } })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while retrieving Accommodation.",
+        message: err.message || "Some error occurred while retrieving asset.",
       });
     });
 };
