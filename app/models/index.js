@@ -17,6 +17,15 @@ db.sequelize = sequelize;
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.session = require("./session.model.js")(sequelize, Sequelize);
 
+
+db.course = require("./course.model.js")(sequelize, Sequelize);
+
+db.student = require("./student.model.js")(sequelize, Sequelize);
+db.asset = require("./asset.model.js")(sequelize, Sequelize);
+db.assetdata = require("./assetdata.model.js")(sequelize, Sequelize);
+db.model = require("./model.model.js")(sequelize, Sequelize);
+// foreign keys for accommodation
+
 db.specificAsset = require("./specificAsset.model.js")(sequelize, Sequelize);
 db.warranty = require("./warranty.model.js")(sequelize, Sequelize);
 db.lease = require("./lease.model.js")(sequelize, Sequelize);
@@ -25,6 +34,7 @@ db.building = require("./building.model.js")(sequelize, Sequelize);
 db.accommodation = require("./asset.model.js")(sequelize, Sequelize);
 db.accommodation = require("./assetdata.model.js")(sequelize, Sequelize);
 db.accommodation = require("./model.model.js")(sequelize, Sequelize);
+
 
 
 // foreign keys for room

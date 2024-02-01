@@ -1,5 +1,4 @@
 module.exports = (sequelize, Sequelize) => {
-    const Asset = require('./asset.model.js')
     
     
     const Asset = sequelize.define("asset", {
