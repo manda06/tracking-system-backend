@@ -16,7 +16,6 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.session = require("./session.model.js")(sequelize, Sequelize);
-db.student = require("./student.model.js")(sequelize, Sequelize);
 db.asset = require("./asset.model.js")(sequelize, Sequelize);
 db.assetdata = require("./assetdata.model.js")(sequelize, Sequelize);
 db.model = require("./model.model.js")(sequelize, Sequelize);
