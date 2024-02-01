@@ -17,14 +17,39 @@ db.sequelize = sequelize;
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.session = require("./session.model.js")(sequelize, Sequelize);
 
-db.course = require("./course.model.js")(sequelize, Sequelize);
+db.specificAsset = require("./specificAsset.model.js")(sequelize, Sequelize);
+db.warranty = require("./warranty.model.js")(sequelize, Sequelize);
+db.lease = require("./lease.model.js")(sequelize, Sequelize);
+db.room = require("./room.model.js")(sequelize, Sequelize);
+db.building = require("./building.model.js")(sequelize, Sequelize);
 
-db.student = require("./student.model.js")(sequelize, Sequelize);
-db.accommodation = require("./accommodation.model.js")(sequelize, Sequelize);
-
-// foreign keys for accommodation
 
 
+// foreign keys for room
+db.building.hasMany(
+  db.room,
+  { as: "rooms" },
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+)
+db.room.belongsTo(
+  db.building,
+  { as: "building" },
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+)
+
+
+// foreign keys for specificAsset
+db.specificAsset.hasOne(
+  db.warranty,
+  { as: "warranty" },
+  { foreignKey: { allowNull: true } }
+);
+
+db.specificAsset.hasOne(
+  db.lease,
+  { as: "lease" },
+  { foreignKey: { allowNull: true } }
+);
 
 // foreign key for session
 db.user.hasMany(
@@ -33,19 +58,6 @@ db.user.hasMany(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 db.session.belongsTo(
-  db.user,
-  { as: "user" },
-  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-);
-
-
-// foreign key for students
-db.user.hasMany(
-  db.student,
-  { as: "student" },
-  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-);
-db.student.belongsTo(
   db.user,
   { as: "user" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
