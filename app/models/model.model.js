@@ -1,5 +1,4 @@
 module.exports = (sequelize, Sequelize) => {
-    const Student = require('./model.model.js')
 
     
     const Model = sequelize.define("model", {
