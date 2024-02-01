@@ -35,6 +35,10 @@ require("./app/routes/warranty.routes.js")
 require("./app/routes/lease.routes.js")
 require("./app/routes/room.routes.js")(app);
 require("./app/routes/building.routes.js")(app);
+require("./app/routes/asset.routes")(app);
+require("./app/routes/assetdata.routes")(app);
+require("./app/routes/assettype.routes")(app);
+require("./app/routes/model.routes")(app);
 
 
 // set port, listen for requests

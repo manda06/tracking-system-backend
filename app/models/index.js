@@ -22,7 +22,9 @@ db.warranty = require("./warranty.model.js")(sequelize, Sequelize);
 db.lease = require("./lease.model.js")(sequelize, Sequelize);
 db.room = require("./room.model.js")(sequelize, Sequelize);
 db.building = require("./building.model.js")(sequelize, Sequelize);
-
+db.accommodation = require("./asset.model.js")(sequelize, Sequelize);
+db.accommodation = require("./assetdata.model.js")(sequelize, Sequelize);
+db.accommodation = require("./model.model.js")(sequelize, Sequelize);
 
 
 // foreign keys for room
