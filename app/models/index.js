@@ -88,41 +88,41 @@ db.session.belongsTo(
 
 
 
-// foreign key for students
-// db.user.hasMany(
-//   db.student,
-//   { as: "student" },
-//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-// );
-// db.student.belongsTo(
-//   db.user,
-//   { as: "user" },
-//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-// );
+//foreign key for Person
+db.person.hasMany(
+  db.assetStatus,
+  { as: "assetStatus" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.assetStatus.belongsTo(
+  db.person,
+  { as: "person" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
 
 
-// db.specificAsset.hasMany(
-//   db.assetStatus,
-//   { as: "assetStatus" },
-//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-// );
-// db.assetStatus.belongsTo(
-//   db.specificAsset,
-//   { as: "specificAsset" },
-//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-// );
+db.specificAsset.hasMany(
+  db.assetStatus,
+  { as: "assetStatus" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.assetStatus.belongsTo(
+  db.specificAsset,
+  { as: "specificAsset" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
 
 
-// db.specificAsset.hasMany(
-//   db.logMaintenance,
-//   { as: "logMaintenance" },
-//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-// );
-// db.logMaintenance.belongsTo(
-//   db.specificAsset,
-//   { as: "specificAsset" },
-//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-// );
+db.specificAsset.hasMany(
+  db.logMaintenance,
+  { as: "logMaintenance" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.logMaintenance.belongsTo(
+  db.specificAsset,
+  { as: "specificAsset" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
 
 
 module.exports = db;
