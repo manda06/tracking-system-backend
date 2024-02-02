@@ -24,7 +24,7 @@ db.model = require("./model.model.js")(sequelize, Sequelize);
 
 db.assetStatus = require("./assetStatus.model.js")(sequelize, Sequelize);
 db.logMaintenance = require("./logMaintenance.model.js")(sequelize, Sequelize);
-db.student = require("./student.model.js")(sequelize, Sequelize);
+
 
 
 db.person = require("./person.model.js")(sequelize, Sequelize);
@@ -84,7 +84,7 @@ db.session.belongsTo(
 
 
 
-// foreign key for students
+//foreign key for students
 // db.user.hasMany(
 //   db.student,
 //   { as: "student" },
@@ -97,28 +97,28 @@ db.session.belongsTo(
 // );
 
 
-// db.specificAsset.hasMany(
-//   db.assetStatus,
-//   { as: "assetStatus" },
-//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-// );
-// db.assetStatus.belongsTo(
-//   db.specificAsset,
-//   { as: "specificAsset" },
-//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-// );
+db.specificAsset.hasMany(
+  db.assetStatus,
+  { as: "assetStatus" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.assetStatus.belongsTo(
+  db.specificAsset,
+  { as: "specificAsset" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
 
 
-// db.specificAsset.hasMany(
-//   db.logMaintenance,
-//   { as: "logMaintenance" },
-//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-// );
-// db.logMaintenance.belongsTo(
-//   db.specificAsset,
-//   { as: "specificAsset" },
-//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-// );
+db.specificAsset.hasMany(
+  db.logMaintenance,
+  { as: "logMaintenance" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.logMaintenance.belongsTo(
+  db.specificAsset,
+  { as: "specificAsset" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
 
 
 module.exports = db;
