@@ -1,19 +1,19 @@
 module.exports = (sequelize, Sequelize) => {
-
     
-    const Model = sequelize.define("model", {
-      model: {
+    
+    const  Make = sequelize.define("make", {
+      
+      make: {
         type: Sequelize.STRING,
       },
       
-      
-
+     
       
 
     });
     
    
 
-    return Model;
+    return Make;
   };
   

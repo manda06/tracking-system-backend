@@ -11,8 +11,8 @@ exports.create = (req, res) => {
     return;
   }
   // Create a asset
-  const asset = {
-    make: req.body.make,
+  const model = {
+  
     model: req.body.make,
     
   };

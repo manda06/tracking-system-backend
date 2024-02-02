@@ -16,6 +16,10 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.session = require("./session.model.js")(sequelize, Sequelize);
+
+db.course = require("./make.model.js")(sequelize, Sequelize);
+
+
 db.asset = require("./asset.model.js")(sequelize, Sequelize);
 db.assetdata = require("./assetdata.model.js")(sequelize, Sequelize);
 db.model = require("./model.model.js")(sequelize, Sequelize);
@@ -84,6 +88,7 @@ db.session.belongsTo(
 
 
 
+
 //foreign key for students
 // db.user.hasMany(
 //   db.student,
@@ -95,6 +100,19 @@ db.session.belongsTo(
 //   { as: "user" },
 //   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 // );
+
+//foreign key for Person
+db.person.hasMany(
+  db.assetStatus,
+  { as: "assetStatus" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.assetStatus.belongsTo(
+  db.person,
+  { as: "person" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
 
 
 db.specificAsset.hasMany(
