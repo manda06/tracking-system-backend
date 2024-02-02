@@ -9,9 +9,6 @@ module.exports = (sequelize, Sequelize) => {
       type: {
         type: Sequelize.STRING,
       },
-      specificAssetId: {
-        type: Sequelize.STRING,
-      },
       comments: {
         type: Sequelize.STRING,
       },
