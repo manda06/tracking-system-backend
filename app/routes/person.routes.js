@@ -1,28 +1,28 @@
 module.exports = (app) => {
-  const courses = require("../controllers/person.controller.js");
+  const persons = require("../controllers/person.controller.js");
   const { authenticate } = require("../authorization/authorization.js");
   var router = require("express").Router();
 
-  // Create a new course
-  router.post("/", [authenticate], courses.create);
+  // Create a new person
+  router.post("/", [authenticate], persons.create);
 
-  // Retrieve all course
-  router.get("/", [authenticate], courses.findAll);
+  // Retrieve all persons
+  router.get("/", [authenticate], persons.findAll);
 
-  // Retrieve all course for user
-  router.get("/userTut/:userId", [authenticate], courses.findAllForCourse);
+  // Retrieve all person for user
+  router.get("/userTut/:userId", [authenticate], persons.findAllForPerson);
 
-  // Retrieve a single Course with id
-  router.get("/:id", [authenticate], courses.findOne);
+  // Retrieve a single person with id
+  router.get("/:id", [authenticate], persons.findOne);
 
-  // Update a course with id
-  router.put("/:id", [authenticate], courses.update);
+  // Update a person with id
+  router.put("/:id", [authenticate], persons.update);
 
-  // Delete a course with id
-  router.delete("/:id", [authenticate], courses.delete);
+  // Delete a person with id
+  router.delete("/:id", [authenticate], persons.delete);
 
-  // Delete all course
-  router.delete("/", [authenticate], courses.deleteAll);
+  // Delete all person
+  router.delete("/", [authenticate], persons.deleteAll);
 
-  app.use("/accommodations-t5/courses", router);
+  app.use("/accommodations-t5/persons", router);
 };
