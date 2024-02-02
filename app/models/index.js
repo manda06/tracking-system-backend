@@ -40,15 +40,15 @@ db.session.belongsTo(
 
 
 // foreign key for students
-db.user.hasMany(
-  db.student,
-  { as: "student" },
-  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-);
-db.student.belongsTo(
-  db.user,
-  { as: "user" },
-  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-);
+// db.user.hasMany(
+//   db.student,
+//   { as: "student" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
+// db.student.belongsTo(
+//   db.user,
+//   { as: "user" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
 
 module.exports = db;

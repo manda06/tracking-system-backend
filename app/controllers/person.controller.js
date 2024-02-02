@@ -15,7 +15,7 @@ exports.create = (req, res) => {
     id: req.body.id,
     fName: req.body.fName,
     lName: req.body.lName,
-    assetStatusId: req.params.courseId,
+    assetStatusId: req.params.assetStatusId,
 
   };
   // Save Person in the database
