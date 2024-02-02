@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    const logMain = require("../controllers/course.controller.js");
+    const logMain = require("../controllers/logMaintenance.controller.js");
     const { authenticate } = require("../authorization/authorization.js");
     var router = require("express").Router();
   
@@ -10,7 +10,7 @@ module.exports = (app) => {
     router.get("/", [authenticate], logMain.findAll);
   
     // Retrieve all course for user
-    router.get("/userTut/:userId", [authenticate], logMain.findAllForCourse);
+    router.get("/userTut/:userId", [authenticate], logMain.findAllForLogMain);
   
     // Retrieve a single Course with id
     router.get("/:id", [authenticate], logMain.findOne);

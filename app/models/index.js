@@ -51,28 +51,28 @@ db.student.belongsTo(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 
-db.specificAsset.hasMany(
-  db.assetStatus,
-  { as: "assetStatus" },
-  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-);
-db.assetStatus.belongsTo(
-  db.specificAsset,
-  { as: "specificAsset" },
-  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-);
+// db.specificAsset.hasMany(
+//   db.assetStatus,
+//   { as: "assetStatus" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
+// db.assetStatus.belongsTo(
+//   db.specificAsset,
+//   { as: "specificAsset" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
 
 
-db.specificAsset.hasMany(
-  db.logMaintenance,
-  { as: "logMaintenance" },
-  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-);
-db.logMaintenance.belongsTo(
-  db.specificAsset,
-  { as: "specificAsset" },
-  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-);
+// db.specificAsset.hasMany(
+//   db.logMaintenance,
+//   { as: "logMaintenance" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
+// db.logMaintenance.belongsTo(
+//   db.specificAsset,
+//   { as: "specificAsset" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
 
 
 module.exports = db;

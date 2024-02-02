@@ -48,7 +48,7 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single Course with an id
-exports.findAllForCourse = (req, res) => {
+exports.findAllForLogMain = (req, res) => {
   const id = req.params.id;
   LogMain.findAll({ where: { id: id } })
     .then((data) => {

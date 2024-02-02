@@ -34,7 +34,7 @@ require("./app/routes/course.routes")(app);
 
 require("./app/routes/logMaintenance.routes")(app);
 require("./app/routes/assetStatus.routes")(app);
-require("./app/routes/accommodation.routes")(app);
+
 
 
 // set port, listen for requests
