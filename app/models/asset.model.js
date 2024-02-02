@@ -8,12 +8,6 @@ module.exports = (sequelize, Sequelize) => {
       description: {
         type: Sequelize.STRING,
       },
-      make: {
-        type: Sequelize.STRING,
-      },
-      model: {
-        type: Sequelize.STRING,
-      },
      
       
 
