@@ -17,10 +17,10 @@ db.sequelize = sequelize;
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.session = require("./session.model.js")(sequelize, Sequelize);
 
-db.course = require("./person.model.js")(sequelize, Sequelize);
+db.person = require("./person.model.js")(sequelize, Sequelize);
 
 db.department = require("./department.model.js")(sequelize, Sequelize);
-db.accommodation = require("./accommodation.model.js")(sequelize, Sequelize);
+
 
 // foreign keys for accommodation
 

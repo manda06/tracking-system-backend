@@ -33,7 +33,7 @@ require("./app/routes/user.routes")(app);
 require("./app/routes/person.routes.js")(app);
 require("./app/routes/department.routes")(app);
 
-require("./app/routes/accommodation.routes")(app);
+
 
 
 // set port, listen for requests
