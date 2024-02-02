@@ -21,6 +21,11 @@ db.assetdata = require("./assetdata.model.js")(sequelize, Sequelize);
 db.model = require("./model.model.js")(sequelize, Sequelize);
 // foreign keys for accommodation
 
+
+db.person = require("./person.model.js")(sequelize, Sequelize);
+
+db.department = require("./department.model.js")(sequelize, Sequelize);
+
 db.specificAsset = require("./specificAsset.model.js")(sequelize, Sequelize);
 db.warranty = require("./warranty.model.js")(sequelize, Sequelize);
 db.lease = require("./lease.model.js")(sequelize, Sequelize);
@@ -29,6 +34,7 @@ db.building = require("./building.model.js")(sequelize, Sequelize);
 db.accommodation = require("./asset.model.js")(sequelize, Sequelize);
 db.accommodation = require("./assetdata.model.js")(sequelize, Sequelize);
 db.accommodation = require("./model.model.js")(sequelize, Sequelize);
+
 
 
 
@@ -69,5 +75,20 @@ db.session.belongsTo(
   { as: "user" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
+
+
+
+// foreign key for students
+// db.user.hasMany(
+//   db.student,
+//   { as: "student" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
+// db.student.belongsTo(
+//   db.user,
+//   { as: "user" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
+
 
 module.exports = db;
