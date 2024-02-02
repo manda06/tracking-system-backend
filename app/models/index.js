@@ -16,36 +16,20 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.session = require("./session.model.js")(sequelize, Sequelize);
-
-db.course = require("./make.model.js")(sequelize, Sequelize);
-
-
 db.asset = require("./asset.model.js")(sequelize, Sequelize);
 db.assetdata = require("./assetdata.model.js")(sequelize, Sequelize);
+db.assettype = require("./assettype.model.js")(sequelize, Sequelize);
 db.model = require("./model.model.js")(sequelize, Sequelize);
-// foreign keys for accommodation
-
-
+db.make = require("./make.model.js")(sequelize, Sequelize);
 db.assetStatus = require("./assetStatus.model.js")(sequelize, Sequelize);
 db.logMaintenance = require("./logMaintenance.model.js")(sequelize, Sequelize);
-
-
-
 db.person = require("./person.model.js")(sequelize, Sequelize);
-
 db.department = require("./department.model.js")(sequelize, Sequelize);
-
 db.specificAsset = require("./specificAsset.model.js")(sequelize, Sequelize);
 db.warranty = require("./warranty.model.js")(sequelize, Sequelize);
 db.lease = require("./lease.model.js")(sequelize, Sequelize);
 db.room = require("./room.model.js")(sequelize, Sequelize);
 db.building = require("./building.model.js")(sequelize, Sequelize);
-db.accommodation = require("./asset.model.js")(sequelize, Sequelize);
-db.accommodation = require("./assetdata.model.js")(sequelize, Sequelize);
-db.accommodation = require("./model.model.js")(sequelize, Sequelize);
-
-
-
 
 
 // foreign keys for room
@@ -86,20 +70,6 @@ db.session.belongsTo(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 
-
-
-
-//foreign key for students
-// db.user.hasMany(
-//   db.student,
-//   { as: "student" },
-//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-// );
-// db.student.belongsTo(
-//   db.user,
-//   { as: "user" },
-//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
-// );
 
 //foreign key for Person
 db.person.hasMany(
