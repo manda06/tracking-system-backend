@@ -1,5 +1,5 @@
 const db = require("../models");
-const Course = db.course;
+const Person = db.person;
 const Op = db.Sequelize.Op;
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
@@ -10,16 +10,16 @@ exports.create = (req, res) => {
     });
     return;
   }
-  // Create a Tutorial
-  const course = {
-    title: req.body.title,
-    courseNum: req.body.courseNum,
-    courseId: req.params.courseId,
-    facultyId: req.body.facultyId,
-    studentId: req.body.studentId,
+  // Create a person
+  const person = {
+    id: req.body.id,
+    fName: req.body.fName,
+    lName: req.body.lName,
+    assetStatusId: req.params.assetStatusId,
+
   };
-  // Save Course in the database
-  Course.create(course)
+  // Save Person in the database
+  Person.create(person)
     .then((data) => {
       res.send(data);
     })
@@ -30,10 +30,10 @@ exports.create = (req, res) => {
       });
     });
 };
-// Retrieve all Courses from the database.
+// Retrieve all Persons from the database.
 exports.findAll = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+  const id = req.query.id;
+  var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
   Course.findAll({ where: condition })
     .then((data) => {
       res.send(data);
@@ -41,21 +41,21 @@ exports.findAll = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving Courses.",
+          err.message || "Some error occurred while retrieving Persons.",
       });
     });
 };
 
-// Find a single Course with an id
-exports.findAllForCourse = (req, res) => {
-  const courseId = req.params.courseId;
-  Course.findAll({ where: { courseId: courseId } })
+// Find a single Person with an id
+exports.findAllForPerson = (req, res) => {
+  const id = req.params.id;
+  Course.findAll({ where: { id: id } })
     .then((data) => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find courses for user with id=${courseId}.`,
+          message: `Cannot find courses for user with id=${id}.`,
         });
       }
     })
@@ -63,11 +63,11 @@ exports.findAllForCourse = (req, res) => {
       res.status(500).send({
         message:
           err.message ||
-          "Error retrieving courses for user with id=" + courseId,
+          "Error retrieving persons for user with id=" + id,
       });
     });
 };
-// Find a single Course with an id
+// Find a single Person with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
   Course.findByPk(id)
@@ -76,17 +76,17 @@ exports.findOne = (req, res) => {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Course with id=${id}.`,
+          message: `Cannot find Person with id=${id}.`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Error retrieving Course with id=" + id,
+        message: err.message || "Error retrieving Person with id=" + id,
       });
     });
 };
-// Update a COurse by the id in the request
+// Update a Person by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
   Course.update(req.body, {
@@ -99,17 +99,17 @@ exports.update = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot update Course with id=${id}. Maybe Course was not found or req.body is empty!`,
+          message: `Cannot update Person with id=${id}. Maybe Course was not found or req.body is empty!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Error updating Course with id=" + id,
+        message: err.message || "Error updating Person with id=" + id,
       });
     });
 };
-// Delete a Course with the specified id in the request
+// Delete a Person with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
   Course.destroy({
@@ -118,21 +118,21 @@ exports.delete = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Course was deleted successfully!",
+          message: "Person was deleted successfully!",
         });
       } else {
         res.send({
-          message: `Cannot delete Course with id=${id}. Maybe Course was not found!`,
+          message: `Cannot delete Person with id=${id}. Maybe Course was not found!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Could not delete Course with id=" + id,
+        message: err.message || "Could not delete Person with id=" + id,
       });
     });
 };
-// Delete all Tutorials from the database.
+// Delete all Persons from the database.
 exports.deleteAll = (req, res) => {
   Course.destroy({
     where: {},
@@ -144,7 +144,7 @@ exports.deleteAll = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all courses.",
+          err.message || "Some error occurred while removing all persons.",
       });
     });
 };

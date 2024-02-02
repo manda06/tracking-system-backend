@@ -1,27 +1,26 @@
 module.exports = (sequelize, Sequelize) => {
-    const Student = require('../models/student.model.js')
-    const Course = require('../models/course.model.js')
     
-    const Accommodation = sequelize.define("accommodation", {
+    
+    const Asset = sequelize.define("asset", {
       name: {
         type: Sequelize.STRING,
       },
-      request: {
+      description: {
         type: Sequelize.STRING,
       },
-      approvedBy:{
+      make: {
         type: Sequelize.STRING,
       },
-      category:{
+      model: {
         type: Sequelize.STRING,
       },
-
+     
       
 
     });
     
    
 
-    return Accommodation;
+    return Asset;
   };
   
