@@ -22,6 +22,11 @@ db.model = require("./model.model.js")(sequelize, Sequelize);
 // foreign keys for accommodation
 
 
+db.assetStatus = require("./assetStatus.model.js")(sequelize, Sequelize);
+db.logMaintenance = require("./logMaintenance.model.js")(sequelize, Sequelize);
+db.student = require("./student.model.js")(sequelize, Sequelize);
+
+
 db.person = require("./person.model.js")(sequelize, Sequelize);
 
 db.department = require("./department.model.js")(sequelize, Sequelize);
@@ -34,6 +39,7 @@ db.building = require("./building.model.js")(sequelize, Sequelize);
 db.accommodation = require("./asset.model.js")(sequelize, Sequelize);
 db.accommodation = require("./assetdata.model.js")(sequelize, Sequelize);
 db.accommodation = require("./model.model.js")(sequelize, Sequelize);
+
 
 
 
@@ -87,6 +93,30 @@ db.session.belongsTo(
 // db.student.belongsTo(
 //   db.user,
 //   { as: "user" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
+
+
+// db.specificAsset.hasMany(
+//   db.assetStatus,
+//   { as: "assetStatus" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
+// db.assetStatus.belongsTo(
+//   db.specificAsset,
+//   { as: "specificAsset" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
+
+
+// db.specificAsset.hasMany(
+//   db.logMaintenance,
+//   { as: "logMaintenance" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
+// db.logMaintenance.belongsTo(
+//   db.specificAsset,
+//   { as: "specificAsset" },
 //   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 // );
 

@@ -31,6 +31,9 @@ require("./app/routes/auth.routes.js")(app);
 require("./app/routes/user.routes")(app);
 
 
+require("./app/routes/logMaintenance.routes")(app);
+require("./app/routes/assetStatus.routes")(app);
+
 require("./app/routes/person.routes.js")(app);
 require("./app/routes/department.routes")(app);
 
@@ -45,6 +48,7 @@ require("./app/routes/asset.routes")(app);
 require("./app/routes/assetdata.routes")(app);
 require("./app/routes/assettype.routes")(app);
 require("./app/routes/model.routes")(app);
+
 
 
 
