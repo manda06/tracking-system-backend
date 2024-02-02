@@ -12,8 +12,9 @@ exports.create = (req, res) => {
   }
   // Create a asset
   const asset = {
-  
-    model: req.body.make,
+
+    make: req.body.make,
+   
     
   };
   // Save asset in the database
