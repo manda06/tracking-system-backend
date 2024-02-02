@@ -30,8 +30,21 @@ app.get("/", (req, res) => {
 require("./app/routes/auth.routes.js")(app);
 require("./app/routes/user.routes")(app);
 
-require("./app/routes/course.routes")(app);
 
+
+require("./app/routes/logMaintenance.routes")(app);
+require("./app/routes/assetStatus.routes")(app);
+
+require("./app/routes/person.routes.js")(app);
+require("./app/routes/department.routes")(app);
+
+
+
+require("./app/routes/specificAsset.routes.js")
+require("./app/routes/warranty.routes.js")
+require("./app/routes/lease.routes.js")
+require("./app/routes/room.routes.js")(app);
+require("./app/routes/building.routes.js")(app);
 
 require("./app/routes/asset.routes")(app);
 require("./app/routes/assetdata.routes")(app);
