@@ -28,7 +28,7 @@ db.model = require("./model.model.js")(sequelize, Sequelize);
 
 db.assetStatus = require("./assetStatus.model.js")(sequelize, Sequelize);
 db.logMaintenance = require("./logMaintenance.model.js")(sequelize, Sequelize);
-db.student = require("./student.model.js")(sequelize, Sequelize);
+
 
 
 db.person = require("./person.model.js")(sequelize, Sequelize);
