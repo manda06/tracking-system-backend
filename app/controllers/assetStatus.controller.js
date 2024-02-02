@@ -69,7 +69,7 @@ exports.findAllForAsset = (req, res) => {
           "Error retrieving asset for user with id=" + id,
       });
     });
-};logMain
+};
 // Find a single asset with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
