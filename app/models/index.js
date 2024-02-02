@@ -88,6 +88,19 @@ db.session.belongsTo(
 
 
 
+
+//foreign key for students
+// db.user.hasMany(
+//   db.student,
+//   { as: "student" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
+// db.student.belongsTo(
+//   db.user,
+//   { as: "user" },
+//   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+// );
+
 //foreign key for Person
 db.person.hasMany(
   db.assetStatus,
@@ -99,6 +112,7 @@ db.assetStatus.belongsTo(
   { as: "person" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
+
 
 
 db.specificAsset.hasMany(
