@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
     
     
-    const Asset = sequelize.define("asset", {
+    const  Make = sequelize.define("make", {
       
       make: {
         type: Sequelize.STRING,
@@ -14,6 +14,6 @@ module.exports = (sequelize, Sequelize) => {
     
    
 
-    return Asset;
+    return Make;
   };
   
