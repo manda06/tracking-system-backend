@@ -69,7 +69,59 @@ db.session.belongsTo(
   { as: "user" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
-
+//foreign keys for asset
+db.asset.hasMany(
+  db.specificAsset,
+  { as: "specificAsset" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.specificAsset.belongsTo(
+  db.asset,
+  { as: "asset" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.make.hasMany(
+  db.asset,
+  { as: "asset" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.asset.belongsTo(
+  db.make,
+  { as: "make" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.assettype.hasMany(
+  db.asset,
+  { as: "asset" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.asset.belongsTo(
+  db.assettype,
+  { as: "assettype" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+//foreign keys for assettype
+db.assettype.hasMany(
+  db.assetdata,
+  { as: "assetdata" },
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+);
+db.assetdata.belongsTo(
+  db.assettype,
+  { as: "assettype" },
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+);
+// foreign keys for make and model
+db.make.hasMany(
+  db.model,
+  { as: "model" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.model.belongsTo(
+  db.make,
+  { as: "make" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
 
 //foreign key for Person
 db.person.hasMany(
