@@ -13,9 +13,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    assetStatusId: {
-      type: Sequelize.INTEGER,
-    }
+   
   });
   return Person;
 };
