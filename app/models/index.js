@@ -46,17 +46,13 @@ db.room.belongsTo(
 
 
 // foreign keys for specificAsset
-db.specificAsset.hasOne(
-  db.warranty,
-  { as: "warranty" },
-  { foreignKey: { allowNull: true } }
-);
+db.specificAsset.hasOne(db.warranty);
+db.warranty.hasOne(db.specificAsset);
 
-db.specificAsset.hasOne(
-  db.lease,
-  { as: "lease" },
-  { foreignKey: { allowNull: true } }
-);
+db.specificAsset.hasOne(db.lease);
+db.lease.hasOne(db.specificAsset);
+
+
 
 // foreign key for session
 db.user.hasMany(
@@ -84,7 +80,7 @@ db.assetStatus.belongsTo(
 );
 
 
-
+// foreign keys for specificAsset
 db.specificAsset.hasMany(
   db.assetStatus,
   { as: "assetStatus" },
