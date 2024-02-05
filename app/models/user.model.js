@@ -21,10 +21,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       alllowNull: false,
     },
-    department: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    }
+    
   });
 
   return User;

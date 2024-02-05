@@ -69,6 +69,17 @@ db.session.belongsTo(
   { as: "user" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
+
+db.department.hasMany(
+  db.user,
+  { as: "user" },
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+);
+db.user.belongsTo(
+  db.department,
+  { as: "department" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
 //foreign keys for asset
 db.asset.hasMany(
   db.specificAsset,
