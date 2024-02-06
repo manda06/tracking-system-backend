@@ -21,6 +21,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       alllowNull: false,
     },
+    schoolId: {
+      type: Sequelize.STRING,
+      alllowNull: false,
+    },
     
   });
 
