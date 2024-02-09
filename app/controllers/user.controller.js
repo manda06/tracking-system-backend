@@ -19,7 +19,7 @@ exports.create = (req, res) => {
     lName: req.body.lName,
     email: req.body.email,
     roleType: req.body.roleType,
-    department: req.body.department,
+    //department: req.body.department,
     // refresh_token: req.body.refresh_token,
     // expiration_date: req.body.expiration_date
   };
@@ -32,6 +32,26 @@ exports.create = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message: err.message || "Some error occurred while creating the User.",
+      });
+    });
+};
+
+//get departmentId 
+exports.getDepartmentId= (req, res) => {
+  Department.findAll({ where: {userId : req.params.departmentId} })
+    .then((data) => {
+      if(data){
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find user with id=${req.params.departmentId}`,
+        })
+      }
+      
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving people.",
       });
     });
 };
