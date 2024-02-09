@@ -19,7 +19,8 @@ exports.create = (req, res) => {
     lName: req.body.lName,
     email: req.body.email,
     roleType: req.body.roleType,
-    //department: req.body.department,
+    department: req.body.department,
+    schoolId: req.body.schoolId
     // refresh_token: req.body.refresh_token,
     // expiration_date: req.body.expiration_date
   };
