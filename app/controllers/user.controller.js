@@ -19,8 +19,8 @@ exports.create = (req, res) => {
     lName: req.body.lName,
     email: req.body.email,
     roleType: req.body.roleType,
-    department: req.body.department,
-    schoolId: req.body.schoolId
+    schoolId: req.body.schoolId,
+    departmentId: req.body.departmentId
     // refresh_token: req.body.refresh_token,
     // expiration_date: req.body.expiration_date
   };
@@ -36,6 +36,26 @@ exports.create = (req, res) => {
       });
     });
 };
+
+//get departmentId 
+// exports.getDepartmentId= (req, res) => {
+//   Department.findAll({ where: {name : req.params.departmentId} })
+//     .then((data) => {
+//       if(data){
+//         res.send(data);
+//       } else {
+//         res.status(404).send({
+//           message: `Cannot find user with id=${req.params.departmentId}`,
+//         })
+//       }
+      
+//     })
+//     .catch((err) => {
+//       res.status(500).send({
+//         message: err.message || "Some error occurred while retrieving people.",
+//       });
+//     });
+// };
 
 // Retrieve all People from the database.
 exports.findAll = (req, res) => {
