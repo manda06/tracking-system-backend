@@ -12,5 +12,5 @@ module.exports = (app) => {
   // Logout
   router.post("/logout", auth.logout);
 
-  app.use("/asset/t5", router);
+  app.use("/asset-t5", router);
 };
