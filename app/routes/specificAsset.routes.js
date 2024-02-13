@@ -22,5 +22,5 @@ module.exports = (app) => {
     // Delete all specificAssets
     router.delete("/", [authenticate], specificAsset.deleteAll);
   
-    app.use("/asset-t5/specificAsset", router);
+    app.use("/asset/t5/specificAsset", router);
   };

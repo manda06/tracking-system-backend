@@ -24,6 +24,6 @@ module.exports = (app) => {
     // Delete all course
     router.delete("/", [authenticate], assetStatus.deleteAll);
   
-    app.use("/accommodations-t5/assetStatus", router);
+    app.use("/asset/t5/assetStatus", router);
   };
   
