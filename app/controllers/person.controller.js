@@ -15,7 +15,8 @@ exports.create = (req, res) => {
     id: req.body.id,
     fName: req.body.fName,
     lName: req.body.lName,
-    assetStatusId: req.params.assetStatusId,
+    schoolId: req.body.schoolId,
+    // assetStatusId: req.params.assetStatusId,
 
   };
   // Save Person in the database
@@ -34,7 +35,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   const id = req.query.id;
   var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
-  Course.findAll({ where: condition })
+  Person.findAll({ where: condition })
     .then((data) => {
       res.send(data);
     })
@@ -49,7 +50,7 @@ exports.findAll = (req, res) => {
 // Find a single Person with an id
 exports.findAllForPerson = (req, res) => {
   const id = req.params.id;
-  Course.findAll({ where: { id: id } })
+  Person.findAll({ where: { id: id } })
     .then((data) => {
       if (data) {
         res.send(data);
@@ -70,7 +71,7 @@ exports.findAllForPerson = (req, res) => {
 // Find a single Person with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Course.findByPk(id)
+  Person.findByPk(id)
     .then((data) => {
       if (data) {
         res.send(data);
@@ -89,7 +90,7 @@ exports.findOne = (req, res) => {
 // Update a Person by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
-  Course.update(req.body, {
+  Person.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
@@ -112,7 +113,7 @@ exports.update = (req, res) => {
 // Delete a Person with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Course.destroy({
+  Person.destroy({
     where: { id: id },
   })
     .then((num) => {
@@ -134,7 +135,7 @@ exports.delete = (req, res) => {
 };
 // Delete all Persons from the database.
 exports.deleteAll = (req, res) => {
-  Course.destroy({
+  Person.destroy({
     where: {},
     truncate: false,
   })
