@@ -33,7 +33,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   const id = req.query.id;
   var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
-  SpecificAsset.findAll({ where: condition })
+  SpecificAsset.findAll( {where: condition,include:[{model: db.asset,as: "asset" }] })
   
     .then((data) => {
       res.send(data);
