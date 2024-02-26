@@ -97,6 +97,16 @@ db.asset.belongsTo(
   { as: "make" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
+db.asset.belongsTo(
+  db.model,
+  {as: "model"},
+  { foreignKey: {allowNull: true}, onDelete: "CASCADE"}
+)
+db.model.hasMany(
+  db.asset,
+  { as: "asset"},
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+)
 db.assettype.hasMany(
   db.asset,
   { as: "asset" },
