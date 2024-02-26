@@ -51,8 +51,8 @@ exports.findAll = (req, res) => {
 
 // Find a single asset with an id
 exports.findAllForAsset = (req, res) => {
-  const id = req.params.id;
-  AssetStatus.findAll({ where: { id: id } })
+  const specificAssetId = req.params.assetId;
+  AssetStatus.findAll({ where: { specificAssetId: specificAssetId }})
     .then((data) => {
       if (data) {
         res.send(data);

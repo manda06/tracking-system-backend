@@ -40,9 +40,9 @@ require("./app/routes/department.routes")(app);
 
 
 
-require("./app/routes/specificAsset.routes.js")
-require("./app/routes/warranty.routes.js")
-require("./app/routes/lease.routes.js")
+require("./app/routes/specificAsset.routes.js")(app);
+require("./app/routes/warranty.routes.js")(app);
+require("./app/routes/lease.routes.js")(app);
 require("./app/routes/room.routes.js")(app);
 require("./app/routes/building.routes.js")(app);
 

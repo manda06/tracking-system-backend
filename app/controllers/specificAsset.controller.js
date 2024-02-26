@@ -3,13 +3,7 @@ const SpecificAsset = db.specificAsset;
 const Op = db.Sequelize.Op;
 // Create and Save a new SpecificAsset
 exports.create = (req, res) => {
-  // Validate request
-  if (!req.body.title) {
-    res.status(400).send({
-      message: "Content can not be empty!",
-    });
-    return;
-  }
+  
   // Create a SpecificAsset
   const specificAsset = {
     serialNumber: req.body.serialNumber,
@@ -33,7 +27,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   const id = req.query.id;
   var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
-  SpecificAsset.findAll({ where: condition })
+  SpecificAsset.findAll( {where: condition,include:[{model: db.asset,as: "asset" }] })
   
     .then((data) => {
       res.send(data);
