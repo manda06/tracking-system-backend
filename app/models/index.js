@@ -44,15 +44,15 @@ db.room.belongsTo(
   { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
 )
 
-//foreign keys for building
-db.specificAsset.hasMany(
-  db.building,
-  { as: "building" },
-  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
-)
-db.building.belongsTo(
+//foreign keys for specificAsset
+db.building.hasMany(
   db.specificAsset,
   { as: "specificAsset" },
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+)
+db.specificAsset.belongsTo(
+  db.building,
+  { as: "building" },
   { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
 )
 

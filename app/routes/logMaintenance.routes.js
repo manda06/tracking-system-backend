@@ -10,7 +10,7 @@ module.exports = (app) => {
     router.get("/", [authenticate], logMain.findAll);
   
     // Retrieve all course for user
-    router.get("/userTut/:userId", [authenticate], logMain.findAllForLogMain);
+    router.get("/logMain/:assetId", [authenticate], logMain.findAllForLogMain);
   
     // Retrieve a single Course with id
     router.get("/:id", [authenticate], logMain.findOne);
