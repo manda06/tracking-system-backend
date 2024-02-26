@@ -11,6 +11,8 @@ module.exports = (app) => {
   
     // Retrieve a single Accommodation with id
     router.get("/:id", [authenticate], asset.findOne);
+
+    
   
     // Update a Tutorial with id
     router.put("/:id", [authenticate], asset.update);
