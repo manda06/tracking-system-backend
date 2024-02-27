@@ -88,31 +88,6 @@ exports.findOne = (req, res) => {
     });
 };    
 
-// Find a single Student with an email
-// exports.findByEmail = (req, res) => {
-//   const email = req.params.email;
-
-//   Student.findOne({
-//     where: {
-//       email: email,
-//     },
-//   })
-//     .then((data) => {
-//       if (data) {
-//         res.send(data);
-//       } else {
-//         res.send({ email: "not found" });
-//         /*res.status(404).send({
-//           message: `Cannot find Student with email=${email}.`
-//         });*/
-//       }
-//     })
-//     .catch((err) => {
-//       res.status(500).send({
-//         message: "Error retrieving Student with email=" + email,
-//       });
-//     });
-// };
 
 // Update a Department by the id in the request
 exports.update = (req, res) => {

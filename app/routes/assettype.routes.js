@@ -1,25 +1,25 @@
 module.exports = (app) => {
-    const asset = require("../controllers/assetType.controller.js");
+    const assetType = require("../controllers/assetType.controller.js");
     const { authenticate } = require("../authorization/authorization.js");
     var router = require("express").Router();
   
     // Create a new assetType
-    router.post("/", [authenticate], asset.create);
+    router.post("/", [authenticate], assetType.create);
   
-    // Retrieve all asset
-    router.get("/", [authenticate], asset.findAll);
+    // Retrieve all assettype
+    router.get("/", [authenticate], assetType.findAll);
   
     // Retrieve a single assetType with id
-    router.get("/:id", [authenticate], asset.findOne);
+    router.get("/:id", [authenticate], assetType.findOne);
   
     // Update a assetType with id
-    router.put("/:id", [authenticate], asset.update);
+    router.put("/:id", [authenticate], assetType.update);
   
     // Delete a assetType with id
-    router.delete("/:id", [authenticate], asset.delete);
+    router.delete("/:id", [authenticate], assetType.delete);
   
     // Delete all assetType
-    router.delete("/", [authenticate], asset.deleteAll);
+    router.delete("/", [authenticate], assetType.deleteAll);
   
     app.use("/asset-t5/assetType", router);
   };
