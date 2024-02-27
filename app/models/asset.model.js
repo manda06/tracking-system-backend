@@ -5,6 +5,10 @@ module.exports = (sequelize, Sequelize) => {
     description: {
       type: Sequelize.STRING,
     },
+    archived: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
+    }
 
 
 

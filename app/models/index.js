@@ -47,10 +47,10 @@ db.room.belongsTo(
 
 // foreign keys for specificAsset
 db.specificAsset.hasOne(db.warranty);
-db.warranty.hasOne(db.specificAsset);
+// db.warranty.hasOne(db.specificAsset);
 
 db.specificAsset.hasOne(db.lease);
-db.lease.hasOne(db.specificAsset);
+// db.lease.hasOne(db.specificAsset);
 
 
 
