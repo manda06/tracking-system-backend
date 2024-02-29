@@ -45,10 +45,11 @@ require("./app/routes/warranty.routes.js")(app);
 require("./app/routes/lease.routes.js")(app);
 require("./app/routes/room.routes.js")(app);
 require("./app/routes/building.routes.js")(app);
+require("./app/routes/assetType.routes.js")(app);
 
 require("./app/routes/asset.routes")(app);
 require("./app/routes/assetdata.routes")(app);
-require("./app/routes/assetType.routes.js");
+require("./app/routes/make.routes")(app);
 require("./app/routes/model.routes")(app);
 
 
