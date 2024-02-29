@@ -18,7 +18,7 @@ db.user = require("./user.model.js")(sequelize, Sequelize);
 db.session = require("./session.model.js")(sequelize, Sequelize);
 db.asset = require("./asset.model.js")(sequelize, Sequelize);
 db.assetdata = require("./assetdata.model.js")(sequelize, Sequelize);
-db.assettype = require("./assettype.model.js")(sequelize, Sequelize);
+db.assetType = require("./assetType.model.js")(sequelize, Sequelize);
 db.model = require("./model.model.js")(sequelize, Sequelize);
 db.make = require("./make.model.js")(sequelize, Sequelize);
 db.assetStatus = require("./assetStatus.model.js")(sequelize, Sequelize);
@@ -58,10 +58,10 @@ db.specificAsset.belongsTo(
 
 // foreign keys for specificAsset
 db.specificAsset.hasOne(db.warranty);
-db.warranty.hasOne(db.specificAsset);
+// db.warranty.hasOne(db.specificAsset);
 
 db.specificAsset.hasOne(db.lease);
-db.lease.hasOne(db.specificAsset);
+// db.lease.hasOne(db.specificAsset);
 
 
 
@@ -108,25 +108,35 @@ db.asset.belongsTo(
   { as: "make" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
-db.assettype.hasMany(
+db.asset.belongsTo(
+  db.model,
+  {as: "model"},
+  { foreignKey: {allowNull: true}, onDelete: "CASCADE"}
+)
+db.model.hasMany(
+  db.asset,
+  { as: "asset"},
+  { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
+)
+db.assetType.hasMany(
   db.asset,
   { as: "asset" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 db.asset.belongsTo(
-  db.assettype,
-  { as: "assettype" },
+  db.assetType,
+  { as: "assetType" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
-//foreign keys for assettype
-db.assettype.hasMany(
+//foreign keys for assetType
+db.assetType.hasMany(
   db.assetdata,
   { as: "assetdata" },
   { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
 );
 db.assetdata.belongsTo(
-  db.assettype,
-  { as: "assettype" },
+  db.assetType,
+  { as: "assetType" },
   { foreignKey: { allowNull: true }, onDelete: "CASCADE" }
 );
 // foreign keys for make and model

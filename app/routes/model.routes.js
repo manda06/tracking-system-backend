@@ -1,25 +1,28 @@
 module.exports = (app) => {
-    const asset = require("../controllers/model.controller.js");
+    const model = require("../controllers/model.controller.js");
     const { authenticate } = require("../authorization/authorization.js");
     var router = require("express").Router();
   
     // Create a new Accommodation
-    router.post("/", [authenticate], asset.create);
+    router.post("/", [authenticate], model.create);
   
-    // Retrieve all asset
-    router.get("/", [authenticate], asset.findAll);
+    // Retrieve all model
+    router.get("/", [authenticate], model.findAll);
   
     // Retrieve a single Accommodation with id
-    router.get("/:id", [authenticate], asset.findOne);
+    router.get("/:id", [authenticate], model.findOne);
+
+  
+    
   
     // Update a Tutorial with id
-    router.put("/:id", [authenticate], asset.update);
+    router.put("/:id", [authenticate], model.update);
   
     // Delete a Accommodation with id
-    router.delete("/:id", [authenticate], asset.delete);
+    router.delete("/:id", [authenticate], model.delete);
   
-    // Delete all asset
-    router.delete("/", [authenticate], asset.deleteAll);
+    // Delete all model
+    router.delete("/", [authenticate], model.deleteAll);
   
-    app.use("/asset-t5/asset", router);
+    app.use("/asset-t5/model", router);
   };

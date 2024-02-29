@@ -1,8 +1,8 @@
 const db = require("../models");
-const Make = db.make;
+const AssetType = db.assetType;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Make
+// Create and Save a new AssetType
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.name) {
@@ -13,33 +13,33 @@ exports.create = (req, res) => {
   }
 
   // Create a Departement
-  const make = {
+  const assetType = {
     id: req.params.id,
     name: req.body.name,
     
   };
 
-  // Save Make in the database
-  Make.create(make)
+  // Save AssetType in the database
+  AssetType.create(assetType)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while creating the Make.",
+        message: err.message || "Some error occurred while creating the AssetType.",
       });
     });
 };
 
 
 exports.getUserId = (req, res) => {
-  Make.findAll({ where: {userId : req.params.userId}})
+  AssetType.findAll({ where: {userId : req.params.userId}})
     .then((data) => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Make with id=${req.params.userId}.`,
+          message: `Cannot find AssetType with id=${req.params.userId}.`,
         });
       }
     })
@@ -56,7 +56,7 @@ exports.findAll = (req, res) => {
   const id = req.query.id;
   var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
 
-  Make.findAll({ where: condition })
+  AssetType.findAll({ where: condition })
     .then((data) => {
       res.send(data);
     })
@@ -67,81 +67,81 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single Make with an id
+// Find a single AssetType with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Make.findByPk(id)
+  AssetType.findByPk(id)
     .then((data) => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Make with id=${id}.`,
+          message: `Cannot find AssetType with id=${id}.`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Make with id=" + id,
+        message: "Error retrieving AssetType with id=" + id,
       });
     });
 };    
 
 
-// Update a Make by the id in the request
+// Update a AssetType by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Make.update(req.body, {
+  AssetType.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Make was updated successfully.",
+          message: "AssetType was updated successfully.",
         });
       } else {
         res.send({
-          message: `Cannot update Make with id=${id}. Maybe Make was not found or req.body is empty!`,
+          message: `Cannot update AssetType with id=${id}. Maybe AssetType was not found or req.body is empty!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Make with id=" + id,
+        message: "Error updating AssetType with id=" + id,
       });
     });
 };
 
-// Delete a Make with the specified id in the request
+// Delete a AssetType with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Make.destroy({
+  AssetType.destroy({
     where: { id: id },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Make was deleted successfully!",
+          message: "AssetType was deleted successfully!",
         });
       } else {
         res.send({
-          message: `Cannot delete Make with id=${id}. Maybe Make was not found!`,
+          message: `Cannot delete AssetType with id=${id}. Maybe AssetType was not found!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Could not delete Make with id=" + id,
+        message: "Could not delete AssetType with id=" + id,
       });
     });
 };
 
 // Delete all People from the database.
 exports.deleteAll = (req, res) => {
-  Make.destroy({
+  AssetType.destroy({
     where: {},
     truncate: false,
   })
