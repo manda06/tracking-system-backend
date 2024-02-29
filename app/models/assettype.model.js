@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
 
     
-    const AssetType = sequelize.define("assettype", {
+    const AssetType = sequelize.define("assetType", {
       name: {
         type: Sequelize.STRING,
       },

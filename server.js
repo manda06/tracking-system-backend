@@ -48,7 +48,7 @@ require("./app/routes/building.routes.js")(app);
 
 require("./app/routes/asset.routes")(app);
 require("./app/routes/assetdata.routes")(app);
-require("./app/routes/assettype.routes")(app);
+require("./app/routes/assetType.routes.js");
 require("./app/routes/model.routes")(app);
 
 
