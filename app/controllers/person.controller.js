@@ -4,7 +4,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.title) {
+  if (!req.body.fName) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
@@ -16,7 +16,6 @@ exports.create = (req, res) => {
     fName: req.body.fName,
     lName: req.body.lName,
     schoolId: req.body.schoolId,
-    // assetStatusId: req.params.assetStatusId,
 
   };
   // Save Person in the database
