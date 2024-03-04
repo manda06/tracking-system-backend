@@ -1,28 +1,28 @@
 module.exports = (app) => {
-  const persons = require("../controllers/person.controller.js");
+  const person = require("../controllers/person.controller.js");
   const { authenticate } = require("../authorization/authorization.js");
   var router = require("express").Router();
 
   // Create a new person
-  router.post("/", [authenticate], persons.create);
+  router.post("/", [authenticate], person.create);
 
   // Retrieve all persons
-  router.get("/", [authenticate], persons.findAll);
+  router.get("/", [authenticate], person.findAll);
 
   // Retrieve all person for user
-  router.get("/userTut/:userId", [authenticate], persons.findAllForPerson);
+  router.get("/userTut/:userId", [authenticate], person.findAllForPerson);
 
   // Retrieve a single person with id
-  router.get("/:id", [authenticate], persons.findOne);
+  router.get("/:id", [authenticate], person.findOne);
 
   // Update a person with id
-  router.put("/:id", [authenticate], persons.update);
+  router.put("/:id", [authenticate], person.update);
 
   // Delete a person with id
-  router.delete("/:id", [authenticate], persons.delete);
+  router.delete("/:id", [authenticate], person.delete);
 
   // Delete all person
-  router.delete("/", [authenticate], persons.deleteAll);
+  router.delete("/", [authenticate], person.deleteAll);
 
-  app.use("/asset-t5/persons", router);
+  app.use("/asset-t5/person", router);
 };
