@@ -51,7 +51,7 @@ exports.findAll = (req, res) => {
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  asset.findByPk(id, {include: Request})
+  asset.findByPk(id)
     .then((data) => {
       if (data) {
         res.send(data);
