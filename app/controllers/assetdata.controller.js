@@ -1,7 +1,7 @@
 const db = require("../models");
-const asset = db.asset;
+const AssetData = db.assetdata;
 const Op = db.Sequelize.Op;
-// Create and Save a new asset
+// Create and Save a new Tutorial
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.title) {
@@ -10,14 +10,19 @@ exports.create = (req, res) => {
     });
     return;
   }
-  // Create a asset
-  const assetdata = {
-    name: req.body.name,
-    data: req.body.data,
-    
+  // Create a Tutorial
+  const assetData = {
+    id: req.params.id,
+    specificAssetId: req.body.specificAssetId,
+    checkin: req.body.checkin,
+    checkout: req.body.checkout,
+    status: req.body.status,
+    permanent: req.body.permanent,
+    personId: req.body.personId,
+    userId: req.body.userId
   };
   // Save asset in the database
-  asset.create(asset)
+  AssetStatus.create(assetData)
     .then((data) => {
       res.send(data);
     })
@@ -28,12 +33,11 @@ exports.create = (req, res) => {
       });
     });
 };
-// Retrieve all asset from the database.
+// Retrieve all assets from the database.
 exports.findAll = (req, res) => {
-  const id = req.query.id;
+    const id = req.query.id;
   var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
-  asset.findAll({ where: condition })
-  
+  AssetData.findAll({ where: condition })
     .then((data) => {
       res.send(data);
     })
@@ -45,11 +49,31 @@ exports.findAll = (req, res) => {
     });
 };
 
-
-// Find a single Tutorial with an id
+// Find a single asset with an id
+exports.findAllForAsset = (req, res) => {
+  const specificAssetId = req.params.assetId;
+  AssetData.findAll({ where: { specificAssetId: specificAssetId }})
+    .then((data) => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find asset for user with id=${id}.`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message ||
+          "Error retrieving asset for user with id=" + id,
+      });
+    });
+};
+// Find a single asset with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  asset.findByPk(id, {include: Request})
+  AssetData.findByPk(id)
     .then((data) => {
       if (data) {
         res.send(data);
@@ -68,7 +92,7 @@ exports.findOne = (req, res) => {
 // Update a asset by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
-  asset.update(req.body, {
+  AssetData.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
@@ -91,7 +115,7 @@ exports.update = (req, res) => {
 // Delete a asset with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
-  asset.destroy({
+  AssetData.destroy({
     where: { id: id },
   })
     .then((num) => {
@@ -111,26 +135,29 @@ exports.delete = (req, res) => {
       });
     });
 };
-// Delete all asset from the database.
+// Delete all Tutorials from the database.
 exports.deleteAll = (req, res) => {
-    asset.destroy({
+    AssetData.destroy({
     where: {},
     truncate: false,
   })
     .then((nums) => {
-      res.send({ message: `${nums} asset were deleted successfully!` });
+      res.send({ message: `${nums} assets were deleted successfully!` });
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all asset.",
+          err.message || "Some error occurred while removing all assets.",
       });
     });
 };
-exports.findAllForCategory = (req, res) => {
-  const category = req.params.category;
 
-  asset.findAll({ where: { category: category } })
+
+
+exports.findAllForType = (req, res) => {
+  const id = req.params.id;
+
+  AssetData.findAll({ where: { assetTypeId: id } })
     .then((data) => {
       res.send(data);
     })

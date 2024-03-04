@@ -20,6 +20,8 @@ module.exports = (app) => {
   
     // Delete all assetType
     router.delete("/", [authenticate], assetType.deleteAll);
+
+    
   
     app.use("/asset-t5/assetType", router);
   };
