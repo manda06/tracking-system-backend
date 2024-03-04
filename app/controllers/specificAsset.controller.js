@@ -9,6 +9,7 @@ exports.create = (req, res) => {
     serialNumber: req.body.serialNumber,
     datePurchased: req.body.datePurchased,
     price: req.body.price,
+    status: req.body.status,
 
   };
   // Save SpecificAsset in the database

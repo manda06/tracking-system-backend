@@ -1,3 +1,5 @@
+const { BOOLEAN } = require("sequelize");
+
 module.exports = (sequelize, Sequelize) => {
     const AssetStatus = sequelize.define("assetStatus", {
       specificAssetId: {
@@ -9,18 +11,13 @@ module.exports = (sequelize, Sequelize) => {
       checkout: {
         type: Sequelize.DATE,
       },
-      status: {
-        type: Sequelize.STRING,
+      current: {
+        type: Sequelize.BOOLEAN,
       },
       permanent: {
         type: Sequelize.BOOLEAN,
       },
-      personId: {
-        type: Sequelize.INTEGER,
-      },
-      userId: {
-        type: Sequelize.INTEGER,
-      },
+     
       
     });
     return AssetStatus;

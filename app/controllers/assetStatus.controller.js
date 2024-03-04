@@ -16,7 +16,7 @@ exports.create = (req, res) => {
     specificAssetId: req.body.specificAssetId,
     checkin: req.body.checkin,
     checkout: req.body.checkout,
-    status: req.body.status,
+    current: req.body.current,
     permanent: req.body.permanent,
     personId: req.body.personId,
     userId: req.body.userId
