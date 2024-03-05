@@ -151,3 +151,17 @@ exports.deleteAll = (req, res) => {
       });
     });
 };
+
+exports.findAllForPerson = (req, res) => {
+  const id = req.params.id;
+
+  AssetStatus.findAll({ where: { personId: id } })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving asset.",
+      });
+    });
+};

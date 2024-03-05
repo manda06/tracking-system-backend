@@ -23,6 +23,8 @@ module.exports = (app) => {
   
     // Delete all course
     router.delete("/", [authenticate], assetStatus.deleteAll);
+
+    router.get("/person/:id", [authenticate], assetStatus.findAllForPerson)
   
     app.use("/asset-t5/assetStatus", router);
   };
