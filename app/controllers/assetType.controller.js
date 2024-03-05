@@ -67,6 +67,8 @@ exports.findAll = (req, res) => {
     });
 };
 
+
+
 // Find a single AssetType with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;

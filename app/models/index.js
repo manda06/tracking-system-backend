@@ -163,6 +163,17 @@ db.assetStatus.belongsTo(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 
+db.user.hasMany(
+  db.assetStatus,
+  { as: "assetStatus" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+db.assetStatus.belongsTo(
+  db.user,
+  { as: "user" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
 
 // foreign keys for specificAsset
 db.specificAsset.hasMany(
