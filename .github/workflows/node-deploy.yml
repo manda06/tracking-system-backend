@@ -59,3 +59,4 @@ jobs:
             sudo cp asset-t5-backend.service /lib/systemd/system/asset-t5-backend.service
             sudo systemctl daemon-reload
             sudo systemctl start asset-t5-backend.service
+            sudo cp .htaccess /dist/.htaccess
