@@ -155,7 +155,7 @@ exports.deleteAll = (req, res) => {
 exports.findAllForPerson = (req, res) => {
   const id = req.params.id;
 
-  AssetStatus.findAll({ where: { personId: id } })
+  AssetStatus.findAll({ where: { personId: id }, include: {model: db.specificAsset, as: "specificAsset"} })
     .then((data) => {
       res.send(data);
     })
