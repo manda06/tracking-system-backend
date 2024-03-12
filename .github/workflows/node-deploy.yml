@@ -57,6 +57,7 @@ jobs:
             npm install
             sudo systemctl stop asset-t5-backend.service
             sudo cp asset-t5-backend.service /lib/systemd/system/asset-t5-backend.service
+            sudo cp .htaccess /dist/.htaccess
             sudo systemctl daemon-reload
             sudo systemctl start asset-t5-backend.service
-            sudo cp .htaccess /dist/.htaccess
+            
