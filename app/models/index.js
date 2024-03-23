@@ -30,6 +30,7 @@ db.warranty = require("./warranty.model.js")(sequelize, Sequelize);
 db.lease = require("./lease.model.js")(sequelize, Sequelize);
 db.room = require("./room.model.js")(sequelize, Sequelize);
 db.building = require("./building.model.js")(sequelize, Sequelize);
+db.assetDataValue = require("./assetDataValue.model.js")(sequelize, Sequelize);
 
 
 // foreign keys for room
@@ -199,5 +200,28 @@ db.logMaintenance.belongsTo(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 
+
+
+db.assetdata.hasMany(
+  db.assetDataValue,
+  { as: "assetDataValue"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE"}
+);
+db.assetDataValue.belongsTo(
+  db.assetdata,
+  { as: "assetdata" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+db.specificAsset.hasMany(
+  db.assetDataValue,
+  { as: "assetDataValue"},
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE"}
+);
+db.assetDataValue.belongsTo(
+  db.specificAsset,
+  { as: "specificAsset" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
 
 module.exports = db;

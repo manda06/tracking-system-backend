@@ -47,10 +47,12 @@ require("./app/routes/room.routes.js")(app);
 require("./app/routes/building.routes.js")(app);
 require("./app/routes/assetType.routes.js")(app);
 
-require("./app/routes/asset.routes")(app);
-require("./app/routes/assetdata.routes")(app);
-require("./app/routes/make.routes")(app);
-require("./app/routes/model.routes")(app);
+require("./app/routes/asset.routes.js")(app);
+require("./app/routes/assetdata.routes.js")(app);
+require("./app/routes/make.routes.js")(app);
+require("./app/routes/model.routes.js")(app);
+require("./app/routes/assetDataValue.routes.js")(app);
+
 
 
 

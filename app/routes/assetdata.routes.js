@@ -17,7 +17,7 @@ module.exports = (app) => {
     
 
     // Retrive all assetData for a assetType
-    router.get("/assetType/:assetTypeId", [authenticate], assetData.findAllForType)
+    router.get("/assetType/:id", [authenticate], assetData.findAllForType)
   
     // Update a Tutorial with id
     router.put("/:id", [authenticate], assetData.update);

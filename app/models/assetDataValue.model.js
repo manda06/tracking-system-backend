@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
     
-    const AssetData = sequelize.define("assetdata", {
-      name: {
+    const AssetDataValue = sequelize.define("assetDataValue", {
+      value: {
         type: Sequelize.STRING,
       },
       
@@ -9,6 +9,5 @@ module.exports = (sequelize, Sequelize) => {
     
    
 
-    return AssetData;
+    return AssetDataValue;
   };
-  

@@ -1,5 +1,5 @@
 const db = require("../models");
-const AssetData = db.assetdata;
+const AssetDataValue = db.assetdata;
 const Op = db.Sequelize.Op;
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
@@ -11,13 +11,14 @@ exports.create = (req, res) => {
     return;
   }
   // Create a Tutorial
-  const assetData = {
+  const assetDataValue = {
     id: req.params.id,
-    name: req.params.name,
-    assetTypeId: req.params.assetTypeId,
+    value: req.params.value,
+    assetDataId: req.params.assetDataId,
+    specificAssetId: req.params.specificAssetId,
   };
   // Save asset in the database
-  AssetStatus.create(assetData)
+  AssetStatus.create(assetDataValue)
     .then((data) => {
       res.send(data);
     })
@@ -32,7 +33,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
     const id = req.query.id;
   var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
-  AssetData.findAll({ where: condition })
+  AssetDataValue.findAll({ where: condition })
     .then((data) => {
       res.send(data);
     })
@@ -47,7 +48,7 @@ exports.findAll = (req, res) => {
 // Find a single asset with an id
 exports.findAllForAsset = (req, res) => {
   const specificAssetId = req.params.assetId;
-  AssetData.findAll({ where: { specificAssetId: specificAssetId }})
+  AssetDataValue.findAll({ where: { specificAssetId: specificAssetId }})
     .then((data) => {
       if (data) {
         res.send(data);
@@ -68,7 +69,7 @@ exports.findAllForAsset = (req, res) => {
 // Find a single asset with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  AssetData.findByPk(id)
+  AssetDataValue.findByPk(id)
     .then((data) => {
       if (data) {
         res.send(data);
@@ -87,7 +88,7 @@ exports.findOne = (req, res) => {
 // Update a asset by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
-  AssetData.update(req.body, {
+  AssetDataValue.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
@@ -110,7 +111,7 @@ exports.update = (req, res) => {
 // Delete a asset with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
-  AssetData.destroy({
+  AssetDataValue.destroy({
     where: { id: id },
   })
     .then((num) => {
@@ -132,7 +133,7 @@ exports.delete = (req, res) => {
 };
 // Delete all Tutorials from the database.
 exports.deleteAll = (req, res) => {
-    AssetData.destroy({
+    AssetDataValue.destroy({
     where: {},
     truncate: false,
   })
@@ -149,10 +150,10 @@ exports.deleteAll = (req, res) => {
 
 
 
-exports.findAllForType = (req, res) => {
+exports.findAllForSpecificAsset = (req, res) => {
   const id = req.params.id;
 
-  AssetData.findAll({ where: { assetTypeId: id } })
+  AssetDataValue.findAll({ where: { specificAssetId: id } })
     .then((data) => {
       res.send(data);
     })
